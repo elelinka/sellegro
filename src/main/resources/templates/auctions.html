@@ -8,9 +8,8 @@
     <h1 style="text-align: center" class="mt-4">WSZYSTKIE AUKCJE</h1>
 
     <form action="/auctions" method="get" th:object="${filters}">
-        <input type="text" placeholder="Tytuł aukcji" th:field="*{title}">
         <input type="text" placeholder="Producent" th:field="*{carMaker}">
-        <input type="text" placeholder="Marka" th:field="*{carModel}">
+        <input type="text" placeholder="Model" th:field="*{carModel}">
         <input type="text" placeholder="Kolor" th:field="*{color}">
         <input type="submit" value="Filtruj" class="btn btn-primary"/>
     </form>
@@ -19,8 +18,13 @@
         <thead>
         <tr>
             <th>
-                <a href="/auctions?sort=title">
-                    Tytuł
+                <a href="/auctions?sort=carMake">
+                    Marka
+                </a>
+            </th>
+            <th>
+                <a href="/auctions?sort=carModel">
+                    Model
                 </a>
             </th>
             <th>
@@ -42,7 +46,8 @@
         </thead>
         <tbody>
         <tr th:each="car: ${cars}">
-            <td th:text="${car.title}"></td>
+            <td th:text="${car.carMake}"></td>
+            <td th:text="${car.carModel}"></td>
             <td th:text="|${car.price} zł|"></td>
             <td th:text="${car.color}"></td>
             <td th:text="|${car.endDate}|"></td>
