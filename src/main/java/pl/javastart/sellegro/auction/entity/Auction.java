@@ -20,8 +20,7 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(Long id, String carMake, String carModel, String color, BigDecimal price, LocalDate endDate) {
-        this.id = id;
+    public Auction(String carMake, String carModel, String color, BigDecimal price, LocalDate endDate) {
         this.carMake = carMake;
         this.carModel = carModel;
         this.color = color;

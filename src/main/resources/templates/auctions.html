@@ -55,6 +55,28 @@
         </tbody>
     </table>
 
+    <div th:if="${cars.totalPages > 0}" class="pagination">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li th:each="pageNumber : ${pageNumbers}" class="page-item">
+                    <a class="page-link"
+                       th:href="@{/auctions(size=${cars.size}, page=${pageNumber})}"
+                       th:text="${pageNumber}"
+                       th:class="${pageNumber==cars.number + 1} ? active"></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 </div>
 </body>
