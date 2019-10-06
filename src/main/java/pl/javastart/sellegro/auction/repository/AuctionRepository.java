@@ -2,37 +2,29 @@ package pl.javastart.sellegro.auction.repository;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.javastart.sellegro.auction.entity.Auction;
-
 
 import java.util.List;
 
 @Repository
 public interface AuctionRepository extends JpaRepository<Auction, Long> {
 
-    @Query("SELECT a FROM Auction a ORDER BY a.price DESC")
-    List<Auction> find4MostExpensive(Pageable pageable);
+    List<Auction> findAllByOrderByPriceDesc(Pageable pageable);
 
-    @Query("SELECT a FROM Auction a ORDER BY a.carMake")
-    List<Auction> findAllAuctionsOrderByCarMake();
+    List<Auction> findAllByOrderByCarMake();
 
-    @Query("SELECT a FROM Auction a ORDER BY a.carModel")
-    List<Auction> findAllAuctionsOrderByCarModel();
+    List<Auction> findAllByOrderByCarModel();
 
-    @Query("SELECT a FROM Auction a ORDER BY a.price")
-    List<Auction> findAllAuctionsOrderByPrice();
+    List<Auction> findAllByOrderByPrice();
 
-    @Query("SELECT a FROM Auction a ORDER BY a.color")
-    List<Auction> findAllAuctionsOrderByColor();
+    List<Auction> findAllByOrderByColor();
 
-    @Query("SELECT a FROM Auction a ORDER BY a.endDate")
-    List<Auction> findAllAuctionsOrderByEndDate();
+    List<Auction> findAllByOrderByEndDate();
 
-    List<Auction> findByCarMake(String carMake);
+    List<Auction> findByCarMakeIgnoreCase(String carMake);
 
-    List<Auction> findByCarModel(String carModel);
+    List<Auction> findByCarModelIgnoreCase(String carModel);
 
-    List<Auction> findByColor(String color);
+    List<Auction> findByColorIgnoreCase(String color);
 }

@@ -20,7 +20,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<Auction> auctions = auctionRepository.find4MostExpensive(PageRequest.of(0, 4));
+        List<Auction> auctions = auctionRepository.findAllByOrderByPriceDesc(PageRequest.of(0, 4));
         model.addAttribute("cars", auctions);
         return "home";
     }
